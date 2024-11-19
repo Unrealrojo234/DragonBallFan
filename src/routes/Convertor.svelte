@@ -130,7 +130,7 @@
 			<p>Loading ...</p>
 		{:then}
 			{#each characters as character, i}
-				{#if character.name.includes(userSearch)}
+				{#if character.name.toLocaleLowerCase().includes(userSearch.toLocaleLowerCase())}
 					<div class="zoom" id="character-container">
 						<a onclick={handleClick(character.id)} href={`#${character.id}`}>
 							<img
