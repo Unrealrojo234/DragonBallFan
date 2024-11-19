@@ -1,7 +1,7 @@
 <script>
-    import Convertor from "./Convertor.svelte";
+	import Convertor from './Convertor.svelte';
 </script>
 
 <main class="container-fluid">
-    <Convertor/>
+	<Convertor />
 </main>
