@@ -28,6 +28,7 @@
 				if (data.transformations.length > 0) {
 					show = 'block';
 				}
+				localStorage.setItem('transformations', JSON.stringify(transformations));
 			})
 			.catch((error) => console.log('Error ', error));
 	}
@@ -106,22 +107,6 @@
 			</button>
 		</div>
 	</div>
-	<div style="display: {show};">
-		<div class="chars">
-			{#each transformations as transformation}
-				<div id="transformations">
-					<img
-						loading="lazy"
-						class="img-fluid"
-						id={transformation.name}
-						src={transformation.image}
-						alt={transformation.name}
-					/>
-					<p>{transformation.name}</p>
-				</div>
-			{/each}
-		</div>
-	</div>
 	<a style="display: {show};" href="#transformations" id="showTrans">
 		<button id="showBtn">{null}</button>
 	</a>
@@ -132,7 +117,7 @@
 			{#each characters as character, i}
 				{#if character.name.toLocaleLowerCase().includes(userSearch.toLocaleLowerCase())}
 					<div class="zoom" id="character-container">
-						<a onclick={handleClick(character.id)} href={`#${character.id}`}>
+						<a onclick={handleClick(character.id)} href="/transformations">
 							<img
 								id={character.id}
 								loading="lazy"
@@ -247,16 +232,6 @@
 
 	#transformations {
 		max-width: 32rem;
-	}
-
-	#transformations img {
-		width: 18rem;
-	}
-
-	.chars {
-		display: grid;
-		grid-template-columns: repeat(2, 1fr);
-		grid-gap: 5px;
 	}
 
 	#showBtn {
