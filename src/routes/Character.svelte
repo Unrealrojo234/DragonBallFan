@@ -27,8 +27,9 @@
 				transformations = data.transformations;
 				if (data.transformations.length > 0) {
 					show = 'block';
+					localStorage.setItem('transformations', JSON.stringify(transformations));
+					url = '/transformations';
 				}
-				localStorage.setItem('transformations', JSON.stringify(transformations));
 			})
 			.catch((error) => console.log('Error ', error));
 	}
@@ -117,7 +118,7 @@
 			{#each characters as character, i}
 				{#if character.name.toLocaleLowerCase().includes(userSearch.toLocaleLowerCase())}
 					<div class="zoom" id="character-container">
-						<a onclick={handleClick(character.id)} href="/transformations">
+						<a onclick={handleClick(character.id)} href={'/transformations'}>
 							<img
 								id={character.id}
 								loading="lazy"
